@@ -1,12 +1,149 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal Portfolio for ACM1966 - Algorithms, Projects, and Tech Blog">
+    <title>ACM1966 | CodingPlus Portfolio</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <script>
-        window.location.href = "https://www.cnblogs.com/CodingPlus/"
-    </script>
+    <!-- Background Elements -->
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">ACM<span class="highlight">1966</span></div>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#stats">Stats</a></li>
+                <li><a href="#projects">Projects</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero section-hidden">
+            <div class="hero-content">
+                <h1 class="hero-title">Welcome to <span class="highlight">CodingPlus</span></h1>
+                <p class="hero-subtitle">Exploring algorithms, full-stack development, and tech innovations. Turning ideas into robust code.</p>
+                <div class="hero-actions">
+                    <a href="https://www.cnblogs.com/CodingPlus/" target="_blank" class="btn btn-primary" title="Visit my CodingPlus blog">
+                        <i class="fa-solid fa-book-open"></i> Read My Blog
+                    </a>
+                    <a href="#projects" class="btn btn-secondary">
+                        <i class="fa-solid fa-code"></i> View Projects
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <!-- Abstract coding visualization using pure CSS glassmorphism -->
+                <div class="code-card">
+                    <div class="header">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="code-lines">
+                        <div class="line" style="width: 80%;"></div>
+                        <div class="line" style="width: 60%; margin-left: 20px;"></div>
+                        <div class="line" style="width: 40%; margin-left: 20px;"></div>
+                        <div class="line" style="width: 70%; margin-left: 20px;"></div>
+                        <div class="line" style="width: 90%;"></div>
+                        <div class="line" style="width: 50%; margin-left: 20px;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section id="stats" class="stats section-hidden">
+            <h2 class="section-title">By the Numbers</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-code-commit"></i></div>
+                    <div class="stat-number" data-target="1024">0</div>
+                    <div class="stat-label">Commits</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-brands fa-github"></i></div>
+                    <div class="stat-number" data-target="150">0</div>
+                    <div class="stat-label">Repositories</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                    <div class="stat-number" data-target="5">0</div>
+                    <div class="stat-label">Years of Experience</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects section-hidden">
+            <h2 class="section-title">Featured Work</h2>
+            <div class="projects-grid">
+                <!-- Dummy Project 1 -->
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #FF6B6B, #FF8E53);"></div>
+                    <div class="project-content">
+                        <h3>Algorithm Visualizer</h3>
+                        <p>An interactive platform to visualize complex data structures and pathfinding algorithms.</p>
+                        <div class="tags">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Algorithms</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Dummy Project 2 -->
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #4E65FF, #92EFFD);"></div>
+                    <div class="project-content">
+                        <h3>Distributed Systems</h3>
+                        <p>A high-performance scalable backend showcasing distributed architectural patterns.</p>
+                        <div class="tags">
+                            <span class="tag">Backend</span>
+                            <span class="tag">Architecture</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Link to Blog Project Card -->
+                <div class="project-card highlight-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #11998E, #38EF7D);"></div>
+                    <div class="project-content">
+                        <h3>CodingPlus Technical Blog</h3>
+                        <p>Deep-dive articles on programming, system design, and competitive coding solutions.</p>
+                        <div class="tags">
+                            <span class="tag">Writing</span>
+                            <span class="tag">Open Source</span>
+                        </div>
+                        <a href="https://www.cnblogs.com/CodingPlus/" target="_blank" class="project-link">
+                            Visit Blog <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; <span id="year">2026</span> ACM1966. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://github.com/ACM1966" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.cnblogs.com/CodingPlus/" target="_blank" aria-label="Blog"><i class="fa-solid fa-blog"></i></a>
+        </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
 </body>
 </html>
