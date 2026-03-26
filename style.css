@@ -20,7 +20,6 @@
 
 html {
     scroll-behavior: smooth;
-    overflow: hidden;
     height: 100%;
 }
 
@@ -33,6 +32,28 @@ body {
     min-height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(76, 201, 240, 0.2);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(76, 201, 240, 0.4);
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(76, 201, 240, 0.2) transparent;
 }
 
 /* Background Animated Glows */
