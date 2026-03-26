@@ -20,7 +20,8 @@
 
 html {
     scroll-behavior: smooth;
-    overflow: auto;
+    overflow: hidden;
+    height: 100%;
 }
 
 body {
@@ -29,7 +30,9 @@ body {
     font-family: var(--font-body);
     line-height: 1.6;
     position: relative;
-    min-height: 100vh;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 /* Background Animated Glows */
@@ -214,6 +217,7 @@ section {
 .btn-game {
     background: linear-gradient(135deg, #11998E, #38EF7D);
     color: white;
+    border: none;
     box-shadow: 0 10px 20px rgba(17, 153, 142, 0.3);
 }
 
