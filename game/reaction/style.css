@@ -1,0 +1,118 @@
+.reaction-box {
+    width: 100%;
+    max-width: 400px;
+    height: 300px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #2a2a4a, #1a1a3a);
+    border: 2px solid var(--surface-border);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.reaction-box.waiting {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a5a);
+    border-color: #ff6b6b;
+}
+
+.reaction-box.ready {
+    background: linear-gradient(135deg, #38EF7D, #11998E);
+    border-color: #38EF7D;
+    animation: pulse 0.5s ease infinite;
+}
+
+.reaction-box.early {
+    background: linear-gradient(135deg, #ff6b6b, #cc4444);
+    border-color: #ff6b6b;
+}
+
+.reaction-box.result {
+    background: linear-gradient(135deg, #4cc9f0, #7209b7);
+    border-color: #4cc9f0;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+.reaction-content {
+    text-align: center;
+    padding: 20px;
+}
+
+.reaction-content p {
+    margin: 10px 0;
+}
+
+#reactionText {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+}
+
+#reactionSubtext {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.attempts-list {
+    width: 100%;
+    max-width: 400px;
+    margin-top: 20px;
+}
+
+.attempts-list h3 {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.attempts-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.attempt-item {
+    background: var(--surface-color);
+    border: 1px solid var(--surface-border);
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+}
+
+.attempt-item.fast {
+    border-color: #38EF7D;
+    color: #38EF7D;
+}
+
+.attempt-item.medium {
+    border-color: #f0a500;
+    color: #f0a500;
+}
+
+.attempt-item.slow {
+    border-color: #ff6b6b;
+    color: #ff6b6b;
+}
+
+@media (max-width: 600px) {
+    .reaction-box {
+        height: 250px;
+    }
+    
+    #reactionText {
+        font-size: 1.5rem;
+    }
+    
+    #reactionSubtext {
+        font-size: 0.9rem;
+    }
+}

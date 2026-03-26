@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Typing Speed Test Game - aCm1T">
+    <title>Typing Speed Test | aCm1T</title>
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Outfit:wght@400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="../../index.html" class="logo">aCm<span class="highlight">1T</span></a>
+            <ul class="nav-links">
+                <li><a href="../../index.html"><i class="fa-solid fa-home"></i> Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="game-main">
+        <div class="game-container">
+            <h1 class="game-title"><i class="fa-solid fa-keyboard"></i> Typing Speed Test</h1>
+            
+            <div class="game-info">
+                <div class="score-display">
+                    <span class="score-label">WPM</span>
+                    <span class="score-value" id="wpm">0</span>
+                </div>
+                <div class="score-display">
+                    <span class="score-label">Accuracy</span>
+                    <span class="score-value" id="accuracy">100%</span>
+                </div>
+                <div class="score-display">
+                    <span class="score-label">Time</span>
+                    <span class="score-value" id="timer">60s</span>
+                </div>
+            </div>
+
+            <div class="typing-area">
+                <div class="text-display" id="textDisplay"></div>
+                <input type="text" id="inputField" class="input-field" placeholder="Start typing here..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+            </div>
+
+            <div class="controls">
+                <button class="btn btn-game" id="restartBtn">
+                    <i class="fa-solid fa-rotate-right"></i> Restart
+                </button>
+                <div class="time-selector">
+                    <button class="time-btn" data-time="30">30s</button>
+                    <button class="time-btn active" data-time="60">60s</button>
+                    <button class="time-btn" data-time="120">120s</button>
+                </div>
+            </div>
+
+            <div class="result-panel hidden" id="resultPanel">
+                <h2>Results</h2>
+                <div class="result-stats">
+                    <div class="result-item">
+                        <span class="result-value" id="finalWpm">0</span>
+                        <span class="result-label">WPM</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-value" id="finalAccuracy">0%</span>
+                        <span class="result-label">Accuracy</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-value" id="finalChars">0</span>
+                        <span class="result-label">Characters</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; <span id="year">2026</span> aCm1T. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://github.com/aCm1T" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="../../index.html"><i class="fa-solid fa-home"></i></a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
