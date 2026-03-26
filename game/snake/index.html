@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Snake Game - aCm1T">
+    <title>Snake Game | aCm1T</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="../../index.html" class="logo">aCm<span class="highlight">1T</span></a>
+            <ul class="nav-links">
+                <li><a href="../../index.html"><i class="fa-solid fa-home"></i> Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="game-main">
+        <div class="game-container">
+            <h1 class="game-title"><i class="fa-solid fa-gamepad"></i> Snake Game</h1>
+            
+            <div class="game-info">
+                <div class="score-display">
+                    <span class="score-label">Score</span>
+                    <span class="score-value" id="score">0</span>
+                </div>
+                <div class="score-display">
+                    <span class="score-label">Best</span>
+                    <span class="score-value" id="best-score">0</span>
+                </div>
+            </div>
+
+            <div class="canvas-wrapper">
+                <canvas id="gameCanvas"></canvas>
+                <div class="game-overlay" id="gameOverlay">
+                    <div class="overlay-content">
+                        <h2 id="overlayTitle">Press SPACE to Start</h2>
+                        <p id="overlayText">Use arrow keys or WASD to control</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls-info">
+                <div class="control-key"><i class="fa-solid fa-arrow-up"></i> W / ↑</div>
+                <div class="control-key"><i class="fa-solid fa-arrow-down"></i> S / ↓</div>
+                <div class="control-key"><i class="fa-solid fa-arrow-left"></i> A / ←</div>
+                <div class="control-key"><i class="fa-solid fa-arrow-right"></i> D / →</div>
+            </div>
+
+            <div class="mobile-controls">
+                <button class="mobile-btn" id="btnUp"><i class="fa-solid fa-arrow-up"></i></button>
+                <div class="mobile-row">
+                    <button class="mobile-btn" id="btnLeft"><i class="fa-solid fa-arrow-left"></i></button>
+                    <button class="mobile-btn" id="btnDown"><i class="fa-solid fa-arrow-down"></i></button>
+                    <button class="mobile-btn" id="btnRight"><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; <span id="year">2026</span> aCm1T. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://github.com/aCm1T" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="../../index.html"><i class="fa-solid fa-home"></i></a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
