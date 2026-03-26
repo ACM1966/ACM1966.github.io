@@ -11,7 +11,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px;
+    gap: 20px;
     max-width: 500px;
     width: 100%;
     max-height: calc(100vh - 140px);
@@ -168,21 +168,34 @@
 }
 
 @media (max-width: 600px) {
+    .game-main {
+        padding: 90px 10px 20px;
+    }
+    
+    .game-container {
+        gap: 15px;
+    }
+    
     .game-title {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
+        gap: 10px;
     }
     
     .game-info {
-        gap: 20px;
+        gap: 15px;
     }
     
     .score-display {
-        padding: 12px 20px;
-        min-width: 80px;
+        padding: 10px 18px;
+        min-width: 70px;
+    }
+    
+    .score-label {
+        font-size: 0.8rem;
     }
     
     .score-value {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
     
     .controls-info {
@@ -191,11 +204,27 @@
     
     .mobile-controls {
         display: flex;
+        gap: 8px;
+        margin-top: 5px;
+    }
+    
+    .mobile-row {
+        gap: 8px;
     }
     
     .mobile-btn {
-        width: 55px;
-        height: 55px;
+        width: 65px;
+        height: 65px;
+        font-size: 1.4rem;
+        border-radius: 12px;
+    }
+    
+    .overlay-content h2 {
+        font-size: 1.4rem;
+    }
+    
+    .overlay-content p {
+        font-size: 0.9rem;
     }
 }
 
