@@ -1,119 +1,193 @@
-% English resume (one page). Build: pdflatex Resume_EN.tex (twice)
-\documentclass[9pt,letterpaper]{article}
+%-------------------------
+% Resume in LaTeX — Harshibar / jakeryang layout and macros
+% TinyTeX-safe preamble (no titlesec/fontawesome5/tgheros if unavailable)
+% Section order: Education → Experience → Projects → Leadership \& Campus Roles → Skills \& Other
+% Build: pdflatex Resume_EN.tex (twice)
+%------------------------
+
+\documentclass[letterpaper,10pt]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{lmodern}
-\usepackage[margin=0.5in, top=0.48in, bottom=0.48in]{geometry}
-\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
 \usepackage{tabularx}
+\usepackage[scaled=0.94]{helvet}
+\renewcommand*\familydefault{\sfdefault}
 
-\hypersetup{colorlinks=true, linkcolor=black, urlcolor=blue, pdfauthor={Diyuan Deng}, pdftitle={Resume - Diyuan Deng}}
+\definecolor{light-grey}{gray}{0.83}
+\definecolor{dark-grey}{gray}{0.3}
+\definecolor{text-grey}{gray}{0.08}
+
+\hypersetup{pdfauthor={Diyuan Deng}, pdftitle={Resume - Diyuan Deng}}
+
+\pagestyle{empty}
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\parindent}{0pt}
+\setlength{\tabcolsep}{0in}
+
+% Slightly roomier body lines (readable on 11pt sans)
+\linespread{1.045}\selectfont
+
+% Mimics \titleformat{\section}{...}[\color{light-grey}\titlerule[2pt]\vspace{-4pt}]
+\newcommand{\resumeSection}[1]{%
+  \par\vspace{0.42em plus 0.06em minus 0.03em}%
+  {\large\bfseries\raggedright #1\par}%
+  \nointerlineskip
+  {\color{light-grey}\rule{\linewidth}{2pt}}%
+  \par\vspace{0.14em plus 0.04em minus 0.02em}%
+}
+
+\newcommand{\resumeItem}[1]{%
+  \item\small{#1}%
+}
+
+\newcommand{\resumeSubheading}[4]{%
+  \item
+  \begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & {\color{dark-grey}\small#2}\\[0.08em]
+    \textit{#3} & {\color{dark-grey}\small#4}\\
+  \end{tabular*}\vspace{-2pt}%
+}
+
+\newcommand{\resumeProjectHeading}[2]{%
+  \item
+  \begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    #1 & {\color{dark-grey}\small#2}\\
+  \end{tabular*}\vspace{-2pt}%
+}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newenvironment{resumeSubHeadingList}{%
+  \begin{list}{}{%
+      \setlength{\leftmargin}{0pt}%
+      \setlength{\itemindent}{0pt}%
+      \setlength{\labelwidth}{0pt}%
+      \setlength{\labelsep}{0pt}%
+      \setlength{\itemsep}{0.22em plus 0.04em minus 0.03em}%
+      \setlength{\parsep}{0pt}%
+      \setlength{\topsep}{0pt}%
+      \setlength{\partopsep}{0pt}%
+    }%
+}{\end{list}}
+\newcommand{\resumeSubHeadingListStart}{\begin{resumeSubHeadingList}}
+\newcommand{\resumeSubHeadingListEnd}{\end{resumeSubHeadingList}}
+\newcommand{\resumeItemListStart}{%
+  \begingroup
+  \setlength{\itemsep}{0.16em plus 0.03em minus 0.02em}%
+  \setlength{\parsep}{0pt}%
+  \setlength{\topsep}{0.12em}%
+  \setlength{\partopsep}{0pt}%
+  \begin{itemize}%
+}
+\newcommand{\resumeItemListEnd}{\end{itemize}\endgroup}
+
+\color{text-grey}
+
+%-------------------------------------------
+\begin{document}
 
 \newcommand{\FullName}{Diyuan Deng}
-\newcommand{\Email}{123090079@link.cuhk.edu.cn}
+\newcommand{\Email}{diyuandeng@link.cuhk.edu.cn}
 \newcommand{\Phone}{+86~153~0153~9901}
 \newcommand{\Location}{Shenzhen, China}
 \newcommand{\Github}{https://github.com/aCm1T}
 
-% Section: fixed spacing (no stretch glue that leaves random gaps)
-\newcommand{\cvsec}[1]{%
-  \par\addvspace{0.32em}%
-  \noindent{\normalsize\bfseries #1}\\[-0.22em]%
-  \rule{\linewidth}{0.4pt}%
-  \par\vspace{0.14em}%
-}
-
-\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
-
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{0pt}
-\setlength{\leftmargini}{1.05em}
-\setlength{\itemsep}{0.03em}
-\setlength{\parsep}{0pt}
-\setlength{\topsep}{0.05em}
-\setlength{\partopsep}{0pt}
-\linespread{1.05}\selectfont
-
-\begin{document}
-\raggedright
-
+%----------HEADING (template-style contact line)----------
 \begin{center}
-  {\Large\bfseries \FullName}\\[0.15em]
-  {\footnotesize B.Sc.\ candidate, Data Science \& Big Data Technology {\textbar} embodied AI, LLM inference, applied ML}\\[0.2em]
-  \scriptsize
-  \href{mailto:\Email}{\Email} \quad|\quad \Phone \quad|\quad \Location \quad|\quad \href{\Github}{GitHub}
+  \textbf{\Huge\FullName} \\ \vspace{5pt}
+  \small
+  \texttt{\Phone} \hspace{1pt} $|$
+  \hspace{1pt} \href{mailto:\Email}{\texttt{\Email}} \hspace{1pt} $|$
+  \hspace{1pt} \href{\Github}{\texttt{github.com/aCm1T}} \hspace{1pt} $|$
+  \hspace{1pt} \texttt{\Location}
+  \\ \vspace{-3pt}
 \end{center}
-\vspace{0.08em}
 
-\cvsec{Education}
-\textbf{The Chinese University of Hong Kong, Shenzhen (CUHK-Shenzhen)} \hfill {\normalsize Shenzhen, China}\\
-B.Sc., Data Science and Big Data Technology \hfill {\normalsize Sept.\ 2023 -- Jun.\ 2027 (expected)}
-\begin{itemize}
-  \item GPA: \textbf{3.43} / 4.0.
-  \item Coursework: Database Systems, Algorithm Design and Analysis, Stochastic Processes, Optimization, Machine Learning, Statistical Computing.
-\end{itemize}
+%-----------EDUCATION-----------
+\resumeSection{EDUCATION}
+\resumeSubHeadingListStart
 
-\cvsec{Experience}
-\textbf{Data Engineering Intern} \quad Shanghai Wuzhi Evolution Technology Co., Ltd., Embodied Data R\&D \hfill {\normalsize Shanghai {\textbar} Jun.--Aug.\ 2025}\\
-{\small Collaborated with Prof.\ Bo Zhao's group (Shanghai Jiao Tong University) on embodied AI data and VLA models.}
-\begin{itemize}
-  \item \textbf{xArm} data pipeline and \textbf{VLA} optimization; \textbf{10,000+} trajectories. \textbf{LeRobot} stack; multimodal LLMs and NL commands; grasping/stacking \textbf{$>$90\%} success.
-\end{itemize}
+  \resumeSubheading
+    {The Chinese University of Hong Kong, Shenzhen}{Sep 2023 -- Jun 2027 (Expected)}
+    {B.Sc., Data Science and Big Data Technology}{Shenzhen, China}
+    \resumeItemListStart
+      \resumeItem{GPA: \textbf{3.43} / 4.0; coursework: databases, algorithms, stochastic processes, optimization, machine learning, statistical computing.}
+    \resumeItemListEnd
 
-\cvsec{Projects \& Research}
-\textbf{Enterprise LLM Inference (SFGlang)} \quad Core Developer, SF Technology Co., Ltd. \hfill {\normalsize Jan.\ 2026 -- Present}
-\begin{itemize}
-  \item Throughput/comm for \textbf{Qwen3}-class LLMs and multimodal (\textbf{4B / 30B}) under enterprise load.
-  \item \textbf{SGLang}, dual-container; \textbf{4090} (\textbf{PD/EPD}, \textbf{TP/DP/EP}, \textbf{FP8/INT8}); load-test platform; \textbf{two} patents (in progress). \textbf{Qwen-30B} \textbf{TP4+DP2}: \textbf{TTFT $-$48.9\%}, \textbf{+664\%} throughput; \textbf{Qwen-4B} \textbf{TP1+DP2}: \textbf{+750\%}.
-\end{itemize}
+\resumeSubHeadingListEnd
 
-\vspace{0.06em}
-\noindent\textbf{NSC-Advisor --- Ischemic Stroke Prognosis} \quad Research Assistant \hfill {\normalsize Sept.--Dec.\ 2025}\\
-{\footnotesize Related work submitted to \textbf{ISMRM} (under review).}
-\begin{itemize}
-  \item Interpretable prognosis (\textbf{favorable vs.\ unfavorable}) from admission data; few-shot, prompting, \textbf{RAG}. Dual-input UI; \textbf{93.75\%} on \textbf{16} held-out cases.
-\end{itemize}
+%-----------EXPERIENCE-----------
+\resumeSection{EXPERIENCE}
+\resumeSubHeadingListStart
 
-\vspace{0.06em}
-\noindent\textbf{Library Management System} \quad Developer \hfill {\normalsize Sept.--Nov.\ 2024}
-\begin{itemize}
-  \item Full-stack \textbf{Python (tkinter) + SQLite}: four normalized tables, composite indexes, \textbf{15+} features (\textbf{SHA-256} authentication), admin dashboard; tests covered \textbf{100\%} of requirements.
-\end{itemize}
+  \resumeSubheading
+    {Shanghai Wuzhi Evolution Technology Co., Ltd.\ (Embodied Data R\&D)}{Jun 2025 -- Aug 2025}
+    {Data Engineering Intern}{Shanghai, China}
+    \resumeItemListStart
+      \resumeItem{Collaborated with Prof.\ Bo Zhao's research group (Shanghai Jiao Tong University) on embodied AI data and VLA model development.}
+      \resumeItem{Built an \textbf{xArm} \textbf{data acquisition pipeline} and contributed to \textbf{VLA} optimization (\textbf{10,000+} trajectories); adapted to \textbf{LeRobot}, integrated multimodal LLMs with \textbf{NL commands}, and reached \textbf{$>$90\%} success on grasping/stacking.}
+    \resumeItemListEnd
 
-\vspace{0.06em}
-\noindent\textbf{2D RPG Combat (UE5 + C++)} \quad Developer \hfill {\normalsize Sept.--Dec.\ 2024}
-\begin{itemize}
-  \item \textbf{C++} combat (three enemy AI types); \textbf{Qt} launcher with \textbf{SHA-256} messaging; \textbf{PaperZD} animation state machines; team \textbf{1,000+} lines core code; \textbf{best course project}.
-\end{itemize}
+\resumeSubHeadingListEnd
 
-\cvsec{Campus Roles, Honors \& Skills}
-\textbf{Undergraduate Teaching Fellow (USTF)}, School of Data Science \hfill {\normalsize Sept.\ 2024 -- Present}
-\begin{itemize}
-  \item \textbf{Data Structures}, \textbf{Databases}, +1 core course; \textbf{10+} tutorials, \textbf{800+} students; co-designed problems and grading; \textbf{SDS Excellent USTF Award} (2024--2025).
-\end{itemize}
+%-----------PROJECTS-----------
+\resumeSection{PROJECTS}
+\resumeSubHeadingListStart
 
-\vspace{0.08em}
-\noindent\textbf{Student Assistant}, University Library \hfill {\normalsize Nov.\ 2023 -- Present}
-\begin{itemize}
-  \item Printers (\textbf{X1E}, \textbf{Ultimaker S5}, \textbf{Form~2}), \textbf{30+} jobs; \textbf{10+} edits (FCP, Photoshop); 3D-printing workshops.
-\end{itemize}
+  \resumeProjectHeading
+    {\textbf{Enterprise LLM Inference (SFGlang)} $|$ Core Developer, SF Technology Co., Ltd.}{Jan 2026 -- Present}
+    \resumeItemListStart
+      \resumeItem{Improved throughput and communication for \textbf{Qwen3}-class LLMs and multimodal models (\textbf{4B / 30B}) under enterprise concurrency.}
+      \resumeItem{Deployed \textbf{SGLang} with \textbf{dual-container isolation}; tuned \textbf{4090} clusters (\textbf{PD/EPD}, \textbf{TP/DP/EP}, \textbf{FP8/INT8}); \textbf{load-testing web platform}; \textbf{two} patents (in progress). \textbf{Qwen-30B} \textbf{TP4+DP2}: \textbf{$-$48.9\% TTFT}, \textbf{+664\%} throughput; \textbf{Qwen-4B} \textbf{TP1+DP2}: \textbf{+750\%} (quantize first, minimize TP, maximize DP).}
+    \resumeItemListEnd
 
-\vspace{0.08em}
-\noindent\textbf{Founder \& Vice President}, 2Tired Cycling Club \hfill {\normalsize Jul.\ 2024 -- Present}
-\begin{itemize}
-  \item Core team \textbf{20}, five functions; Songshan Lake \& Tour de France meet-up; first year \textbf{80+} members, \textbf{95\%} satisfaction.
-\end{itemize}
+  \resumeProjectHeading
+    {\textbf{NSC-Advisor: Ischemic Stroke Prognosis} $|$ Research Assistant}{Sep 2025 -- Dec 2025}
+    \resumeItemListStart
+      \resumeItem{{\footnotesize Manuscript submitted to \textbf{ISMRM} (under review).}}
+      \resumeItem{Built an interpretable \textbf{favorable vs.\ unfavorable} prognosis pipeline (few-shot, prompting, \textbf{RAG}); dual-input UI with visualizations; \textbf{93.75\%} on \textbf{16} held-out cases.}
+    \resumeItemListEnd
 
-\vspace{0.1em}
-\noindent\textbf{Honors:}\ {\small CUMCM Guangdong Third (2025); bronze 1500\,m (university games); bronze 100\,m breaststroke (sports festival).}
+  \resumeProjectHeading
+    {\textbf{Library Management System} $|$ Developer}{Sep 2024 -- Nov 2024}
+    \resumeItemListStart
+      \resumeItem{Developed a full-stack \textbf{Python (tkinter) + SQLite} application with four normalized tables, composite indexes, and \textbf{15+} features including \textbf{SHA-256} authentication and an admin dashboard; tests covered \textbf{100\%} of requirements.}
+    \resumeItemListEnd
 
-\vspace{0.2em}
-\noindent\small
-\begin{tabularx}{\linewidth}{@{}p{3.45em}Y@{}}
-  \textbf{Languages} & Chinese (native); English (professional proficiency for coursework and work). \\[0.06em]
-  \textbf{Technical} & \textbf{Python} (advanced), \textbf{SQL}; C++, R, \textbf{UE5}; LLM serving (SGLang, parallelism, quantization); data engineering; tkinter/Qt. \\[0.06em]
-  \textbf{Interests} & Cycling, photography, hiking, amateur radio, Model United Nations. \\
-\end{tabularx}
+  \resumeProjectHeading
+    {\textbf{2D RPG Combat (Unreal Engine 5 \& C++)} $|$ Developer}{Sep 2024 -- Dec 2024}
+    \resumeItemListStart
+      \resumeItem{Implemented \textbf{C++} combat logic and three enemy AI archetypes; built a \textbf{Qt} launcher with \textbf{SHA-256} messaging; used \textbf{PaperZD} for animation state machines; contributed \textbf{1,000+} lines of core team code; project recognized as \textbf{best course project}.}
+    \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------LEADERSHIP \& CAMPUS ROLES-----------
+\resumeSection{LEADERSHIP \& CAMPUS ROLES}
+\begin{resumeSubHeadingList}
+  \small
+  \item{%
+    \textbf{Undergraduate Student Teaching Fellow:} Instructed \textbf{10+} tutorials (\textbf{800+} students) for \textbf{Data Structures} \& \textbf{Databases}; awarded \textbf{SDS Excellent USTF} (2024--2025).\\[0.32em]
+    \textbf{Student Assistant,} University Library (Nov 2023--Present): industrial 3D printers (\textbf{X1E}, \textbf{Ultimaker S5}, \textbf{Form~2}), \textbf{30+} jobs; \textbf{10+} edits (FCP, Photoshop); 3D-printing workshops.\\[0.32em]
+    \textbf{Founder \& Vice President,} 2Tired Cycling Club (Jul 2024--Present): core team \textbf{20}, five functions; community rides \& Tour de France meet-ups; Y1 \textbf{80+} members, \textbf{95\%} satisfaction.%
+  }
+\end{resumeSubHeadingList}
+
+%-----------SKILLS \& OTHER-----------
+\resumeSection{SKILLS \& OTHER}
+\begin{resumeSubHeadingList}
+  \small
+  \item{%
+    \textbf{Awards}{: Third Prize, Guangdong Division, China Undergraduate Mathematical Contest in Modeling (2025)}\\[0.28em]
+    \textbf{Languages}{: Chinese (native); English (professional proficiency for coursework and internships.)}\\[0.28em]
+    \textbf{Programming / ML / tools}{: \textbf{Python} (advanced), \textbf{SQL}, C++, R; \textbf{UE5}, tkinter, Qt; LLM serving (\textbf{SGLang}, parallelism, quantization); Git; Linux-style workflows.}\\[0.28em]
+    \textbf{Interests}{: Cycling, photography, hiking, amateur radio, Model United Nations.}
+  }
+\end{resumeSubHeadingList}
 
 \end{document}
