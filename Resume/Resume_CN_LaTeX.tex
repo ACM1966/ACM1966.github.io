@@ -1,0 +1,143 @@
+% 中文简历。请用 XeLaTeX 编译（两遍更稳）：
+%   cd Resume
+%   xelatex -interaction=nonstopmode Resume_CN_LaTeX.tex
+% 字体：默认「等线 DengXian」（Win10+ 常见，正文比雅黑更利落）。若无此字体，改下面 \setmainfont 为
+%   SimSun、Source Han Serif SC、Noto Serif CJK SC 等（BoldFont 需同步修改）。
+\documentclass[10pt,letterpaper]{article}
+
+% —— XeTeX 中文断行（无 xeCJK 时也尽量自然换行）——
+\XeTeXlinebreaklocale "zh-CN"
+\XeTeXlinebreakskip = 0pt plus 0.18em minus 0.05em
+
+\usepackage{fontspec}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{xcolor}
+
+% 正文字体：等线 + 粗体同族；拉丁字母与中文协调
+\setmainfont{DengXian}[
+  BoldFont   = DengXian Bold,
+  Ligatures  = TeX,
+]
+% 若无「等线」，请取消下一行注释并注释掉上面三行：
+% \setmainfont{SimSun}[BoldFont = SimHei]
+
+\geometry{margin=0.65in}
+\hypersetup{colorlinks=true, linkcolor=black, urlcolor=blue, pdfauthor={邓迪元}, pdftitle={简历 - 邓迪元}}
+
+\newcommand{\Github}{https://github.com/aCm1T}
+
+% 与英文版接近的章节线
+\newcommand{\cvsec}[1]{%
+  \par\addvspace{0.55em}%
+  \noindent{\large\bfseries #1}\\[-0.2em]%
+  {\color{black!45}\rule{\linewidth}{0.45pt}}%
+  \par\addvspace{0.32em}%
+}
+
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.28em}
+\setlength{\leftmargini}{1.05em}
+\setlength{\itemsep}{0.22em}
+\setlength{\parsep}{0pt}
+\setlength{\topskip}{0pt}
+\linespread{1.07}\selectfont
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries 邓迪元}\\[0.28em]
+  {\small 香港中文大学（深圳）\quad 数据科学与大数据技术（本科，在读）\quad|\quad 具身智能 · 大模型推理 · 应用机器学习}\\[0.42em]
+  \footnotesize
+  手机：153-0153-9901 \quad|\quad 邮箱：\href{mailto:123090079@link.cuhk.edu.cn}{123090079@link.cuhk.edu.cn} \quad|\quad 深圳\\
+  \href{\Github}{GitHub}
+\end{center}
+
+\vspace{-0.15em}
+\raggedright
+
+\cvsec{教育经历}
+\textbf{香港中文大学（深圳）}\hfill{\normalsize 深圳}\\[0.12em]
+数据科学与大数据技术 \quad 理学学士（本科）\hfill{\normalsize 2023.09 -- 2027.06（预计）}
+\begin{itemize}
+  \item \textbf{GPA：}3.43 / 4.0。
+  \item \textbf{核心课程：}数据库系统、算法设计与分析、随机过程、最优化、机器学习、统计计算。
+\end{itemize}
+
+\cvsec{实习经历}
+\textbf{数据工程实习生}\quad 上海物智进化科技有限公司 · 具身数据研究部\hfill{\normalsize 上海\quad 2025.06 -- 2025.08}\\[0.12em]
+\textbf{协作背景：}协助上海交通大学赵波教授课题组博士生，支撑具身智能数据与 VLA 相关研发。
+\begin{itemize}
+  \item 团队需建立可规模化的机械臂数据采集与模型迭代闭环；参与搭建 \textbf{xArm} 机械臂\textbf{数据采集体系}，承担 VLA 模型侧优化，主导采集\textbf{逾 1 万条}高质量操作数据。
+  \item 推动 VLA 模型\textbf{适配 LeRobot 框架}，实现端到端通用任务处理；集成多模态大模型，开发\textbf{自然语言指令}交互接口，降低人机协作门槛。
+  \item 在「自动夹取物品」「多层堆叠」等高难度复合任务上，将任务\textbf{成功率提升至 90\% 以上}。
+\end{itemize}
+
+\cvsec{项目经历}
+
+\textbf{顺丰科技：大模型推理优化（SFGlang）}\quad\textbf{核心开发者}\hfill{\normalsize 2026.01 -- 至今}
+\begin{itemize}
+  \item 面向企业端高并发场景，解决 Qwen3 等大语言及多模态模型（4B/30B）部署中的\textbf{性能瓶颈}与\textbf{通信开销}问题。
+  \item 基于 \textbf{SGLang} 与\textbf{双容器隔离}架构搭建自动化基准测试环境；在 \textbf{RTX 4090} 集群上系统调优 \textbf{PD/EPD 分离}、\textbf{TP/DP/EP} 并行及 \textbf{FP8/INT8 量化}；开发\textbf{一站式压测 Web 平台}；依托核心方案\textbf{申请专利 2 项}。
+  \item 总结「\textbf{先量化减重、最小化 TP、最大化 DP}」的部署范式；针对 Qwen-30B 采用 TP4+DP2，\textbf{首字延迟（TTFT）缩短 48.9\%}，\textbf{输出吞吐量提升 664\%}；Qwen-4B 在 TP1+DP2 下\textbf{吞吐量提升 750\%}。
+\end{itemize}
+
+\textbf{NSC-Advisor | 缺血性卒中预后预测系统}\quad 研究助理\hfill{\normalsize 2025.09 -- 2025.12}\\[0.08em]
+{\footnotesize 相关研究工作已投稿 \textbf{ISMRM}，在审。}
+\begin{itemize}
+  \item 基于入院临床数据，构建高准确率、可解释的\textbf{良好/不良}二分类预后系统，并处理数据冲突与证据不足。
+  \item 设计分层抽样选取高质量小样本；采用 \textbf{Few-Shot} 与提示工程构建临床推理流程；\textbf{集成 RAG} 引入外部医学证据以消解冲突；协助开发\textbf{双输入模式}与\textbf{可视化结果}的前端原型。
+  \item 提升模型稳定性与决策可靠性；在\textbf{16 例}真实患者数据上达到\textbf{93.75\%}预测准确率。
+\end{itemize}
+
+\textbf{图书馆智能管理系统}\quad 开发者\hfill{\normalsize 2024.09 -- 2024.11}
+\begin{itemize}
+  \item 基于 \textbf{Python（tkinter）+ SQLite} 完成全栈开发：设计 \textbf{4 张}规范化数据表，运用\textbf{复合索引}优化高频查询；实现\textbf{15+}核心功能（借阅/预约、\textbf{SHA-256} 加密登录等）与可视化看板。
+  \item 全流程测试覆盖\textbf{100\%}需求场景，保障功能与数据安全可追溯。
+\end{itemize}
+
+\textbf{UE5 与 C++ 结合的 RPG 格斗游戏}\quad 开发者\hfill{\normalsize 2024.09 -- 2024.12}
+\begin{itemize}
+  \item 使用 \textbf{C++} 实现 2D 横版战斗（\textbf{3 类}敌人 AI、动态关卡）；采用 \textbf{Qt} 开发含 \textbf{SHA-256} 加密通信的启动器；借助 \textbf{PaperZD} 绑定动画状态机，设计攻击检测与冷却逻辑。
+  \item 团队协作产出\textbf{1000+ 行}核心代码，项目获评\textbf{课程最佳案例}。
+\end{itemize}
+
+\cvsec{校园职务与社会实践}
+
+\textbf{本科生助教（USTF）}\quad 香港中文大学（深圳）数据科学学院\hfill{\normalsize 2024.09 -- 至今\quad 深圳}
+\begin{itemize}
+  \item 承担《数据结构》《数据库》等\textbf{3 门}核心课教学支持；独立讲授\textbf{10 余场} Tutorial，累计覆盖\textbf{800+}名学生，深度参与命题与评分。
+  \item 获评 \textbf{数据科学学院 Excellent USTF Award（2024--2025）}。
+\end{itemize}
+
+\textbf{学生助理}\quad 香港中文大学（深圳）图书馆\hfill{\normalsize 2023.11 -- 至今\quad 深圳}
+\begin{itemize}
+  \item 熟练操作拓竹 X1E、Ultimaker S5、Form 2 等工业级 3D 打印机；独立完成切片、支撑优化与后处理，累计完成\textbf{30+}个打印项目。
+  \item 运用 Final Cut Pro、Photoshop 等完成\textbf{10+}项音视频/图像类协助；组织 3D 打印教学培训，讲解切片流程。
+\end{itemize}
+
+\textbf{创始人兼副社长}\quad 香港中文大学（深圳）2Tired 骑行社\hfill{\normalsize 2024.07 -- 至今\quad 深圳}
+\begin{itemize}
+  \item 从零组建校级运动社团；管理\textbf{20 人}核心团队，搭建\textbf{5 大}职能部门；策划松山湖骑行、「环法选手见面会」等活动。
+  \item 首年吸引\textbf{80+}名成员加入，活动满意度达\textbf{95\%}。
+\end{itemize}
+
+\cvsec{获奖与证书}
+\begin{itemize}
+  \item 2024--2025 数据科学学院 \textbf{SDS Excellent USTF Award}
+  \item 2025 全国大学生数学建模竞赛\textbf{广东赛区三等奖}
+  \item 香港中文大学（深圳）首届校运会男子 1500m \textbf{铜牌}
+  \item 香港中文大学（深圳）第七届体育节男子 100m 蛙泳 \textbf{铜牌}
+\end{itemize}
+
+\cvsec{技能与兴趣}
+\begin{tabularx}{\linewidth}{@{}p{4.0em}Y@{}}
+  \textbf{语言} & 中文（母语）；英语（熟练完成课程与实习工作）。 \\[0.18em]
+  \textbf{技术} & \textbf{Python}（精通）、\textbf{SQL}；C++、R、\textbf{Unreal Engine 5}；大模型推理（SGLang、并行与量化）、数据工程、GUI（tkinter/Qt）。 \\[0.18em]
+  \textbf{兴趣} & 骑行、摄影、徒步、业余无线电、模拟联合国。 \\
+\end{tabularx}
+
+\end{document}
