@@ -1,11 +1,12 @@
-% English resume. Build PDF: cd Resume; pdflatex Resume_EN.tex (run twice for stable bookmarks).
-\documentclass[10pt,letterpaper]{article}
+% English resume (one page). Build: pdflatex Resume_EN.tex (twice)
+\documentclass[9pt,letterpaper]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
-\usepackage[margin=0.65in]{geometry}
+\usepackage[margin=0.5in, top=0.48in, bottom=0.48in]{geometry}
 \usepackage{hyperref}
+\usepackage{tabularx}
 
 \hypersetup{colorlinks=true, linkcolor=black, urlcolor=blue, pdfauthor={Diyuan Deng}, pdftitle={Resume - Diyuan Deng}}
 
@@ -15,91 +16,104 @@
 \newcommand{\Location}{Shenzhen, China}
 \newcommand{\Github}{https://github.com/aCm1T}
 
+% Section: fixed spacing (no stretch glue that leaves random gaps)
+\newcommand{\cvsec}[1]{%
+  \par\addvspace{0.32em}%
+  \noindent{\normalsize\bfseries #1}\\[-0.22em]%
+  \rule{\linewidth}{0.4pt}%
+  \par\vspace{0.14em}%
+}
+
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0.28em}
-\setlength{\leftmargini}{1.1em}
+\setlength{\parskip}{0pt}
+\setlength{\leftmargini}{1.05em}
+\setlength{\itemsep}{0.03em}
+\setlength{\parsep}{0pt}
+\setlength{\topsep}{0.05em}
+\setlength{\partopsep}{0pt}
+\linespread{1.05}\selectfont
 
 \begin{document}
+\raggedright
 
 \begin{center}
-  {\LARGE\bfseries \FullName}\\[0.25em]
-  {\small B.Sc.\ candidate, Data Science \& Big Data Technology {\textbar} LLM systems, embodied AI, applied ML}\\[0.4em]
-  \footnotesize
-  \href{mailto:\Email}{\Email} \;\textbar\; \Phone \;\textbar\; \Location\\
-  \href{\Github}{GitHub}
+  {\Large\bfseries \FullName}\\[0.15em]
+  {\footnotesize B.Sc.\ candidate, Data Science \& Big Data Technology {\textbar} embodied AI, LLM inference, applied ML}\\[0.2em]
+  \scriptsize
+  \href{mailto:\Email}{\Email} \quad|\quad \Phone \quad|\quad \Location \quad|\quad \href{\Github}{GitHub}
 \end{center}
+\vspace{0.08em}
 
-\section*{Education}
-\textbf{The Chinese University of Hong Kong, Shenzhen (CUHK-Shenzhen)} \hfill \textit{Shenzhen, China}\\
-B.Sc., Data Science and Big Data Technology \hfill \textit{Sept.\ 2023 -- Jun.\ 2027 (expected)}
+\cvsec{Education}
+\textbf{The Chinese University of Hong Kong, Shenzhen (CUHK-Shenzhen)} \hfill {\normalsize Shenzhen, China}\\
+B.Sc., Data Science and Big Data Technology \hfill {\normalsize Sept.\ 2023 -- Jun.\ 2027 (expected)}
 \begin{itemize}
   \item GPA: \textbf{3.43} / 4.0.
   \item Coursework: Database Systems, Algorithm Design and Analysis, Stochastic Processes, Optimization, Machine Learning, Statistical Computing.
 \end{itemize}
 
-\section*{Experience}
-\textbf{Data Engineering Intern} \quad Shanghai Wuzhi Evolution Technology Co., Ltd. \hfill \textit{Shanghai {\textbar} Jun.\ 2025 -- Aug.\ 2025}\\
-\textit{Embodied Intelligence Data Research Dept.} Collaborated with Prof.\ Bo Zhao's group (Shanghai Jiao Tong University) on embodied AI data and VLA models.
+\cvsec{Experience}
+\textbf{Data Engineering Intern} \quad Shanghai Wuzhi Evolution Technology Co., Ltd., Embodied Data R\&D \hfill {\normalsize Shanghai {\textbar} Jun.--Aug.\ 2025}\\
+{\small Collaborated with Prof.\ Bo Zhao's group (Shanghai Jiao Tong University) on embodied AI data and VLA models.}
 \begin{itemize}
-  \item Built an \textbf{xArm} robotic-arm \textbf{data acquisition pipeline} and contributed to \textbf{VLA} model optimization; led collection of \textbf{10,000+} high-quality manipulation trajectories.
-  \item Adapted the VLA stack to the \textbf{LeRobot} framework for end-to-end general task execution; integrated multimodal LLMs and a \textbf{natural-language command interface} to lower the human--robot interaction bar.
-  \item On hard composite tasks (e.g.\ autonomous grasping and multi-layer stacking), raised \textbf{task success rate above 90\%}.
+  \item \textbf{xArm} data pipeline and \textbf{VLA} optimization; \textbf{10,000+} trajectories. \textbf{LeRobot} stack; multimodal LLMs and NL commands; grasping/stacking \textbf{$>$90\%} success.
 \end{itemize}
 
-\section*{Selected Projects}
-\textbf{Core Developer --- Enterprise LLM Inference (SFGlang)} \quad SF Technology Co., Ltd. \hfill \textit{Jan.\ 2026 -- Present}
+\cvsec{Projects \& Research}
+\textbf{Enterprise LLM Inference (SFGlang)} \quad Core Developer, SF Technology Co., Ltd. \hfill {\normalsize Jan.\ 2026 -- Present}
 \begin{itemize}
-  \item Addressed throughput and communication bottlenecks when serving \textbf{Qwen3}-class LLMs and multimodal models (\textbf{4B / 30B}) under high enterprise concurrency.
-  \item Stood up an automated benchmarking stack on \textbf{SGLang} with a \textbf{dual-container isolation} design on an \textbf{RTX 4090} cluster; tuned \textbf{PD/EPD disaggregation}, \textbf{TP/DP/EP} parallelism, and \textbf{FP8/INT8} quantization; shipped a one-stop \textbf{load-testing web platform}. Co-authored \textbf{two patent applications} from the core optimization work.
-  \item Codified a deployment rule of thumb: \textit{quantize to slim weights first, minimize TP, maximize DP}. For \textbf{Qwen-30B}, a \textbf{TP4\,+\,DP2} schedule cut \textbf{time-to-first-token (TTFT) by 48.9\%} and lifted output throughput by \textbf{664\%}; for \textbf{Qwen-4B}, \textbf{TP1\,+\,DP2} improved throughput by \textbf{750\%}.
+  \item Throughput/comm for \textbf{Qwen3}-class LLMs and multimodal (\textbf{4B / 30B}) under enterprise load.
+  \item \textbf{SGLang}, dual-container; \textbf{4090} (\textbf{PD/EPD}, \textbf{TP/DP/EP}, \textbf{FP8/INT8}); load-test platform; \textbf{two} patents (in progress). \textbf{Qwen-30B} \textbf{TP4+DP2}: \textbf{TTFT $-$48.9\%}, \textbf{+664\%} throughput; \textbf{Qwen-4B} \textbf{TP1+DP2}: \textbf{+750\%}.
 \end{itemize}
 
-\textbf{NSC-Advisor --- Ischemic Stroke Prognosis (Binary: favorable vs.\ unfavorable)} \quad Research Assistant \hfill \textit{Sept.\ 2025 -- Dec.\ 2025}\\[0.15em]
+\vspace{0.06em}
+\noindent\textbf{NSC-Advisor --- Ischemic Stroke Prognosis} \quad Research Assistant \hfill {\normalsize Sept.--Dec.\ 2025}\\
 {\footnotesize Related work submitted to \textbf{ISMRM} (under review).}
 \begin{itemize}
-  \item Built a high-accuracy, interpretable prognosis system from admission-time clinical data using \textbf{few-shot learning}, prompt engineering, and a \textbf{RAG} layer over external medical evidence to resolve conflicting records.
-  \item Helped deliver a dual-input frontend prototype with visualized outputs. Final model reached \textbf{93.75\%} accuracy on \textbf{16} held-out real patient cases with improved stability and decision reliability.
+  \item Interpretable prognosis (\textbf{favorable vs.\ unfavorable}) from admission data; few-shot, prompting, \textbf{RAG}. Dual-input UI; \textbf{93.75\%} on \textbf{16} held-out cases.
 \end{itemize}
 
-\textbf{Library Management System} \hfill \textit{Sept.\ 2024 -- Nov.\ 2024}
+\vspace{0.06em}
+\noindent\textbf{Library Management System} \quad Developer \hfill {\normalsize Sept.--Nov.\ 2024}
 \begin{itemize}
-  \item Full-stack \textbf{Python (tkinter) + SQLite}: four normalized tables, composite indexes for hot queries, \textbf{15+} features (lending/reservations, \textbf{SHA-256} authentication), admin dashboard; tests covered \textbf{100\%} of specified requirements.
+  \item Full-stack \textbf{Python (tkinter) + SQLite}: four normalized tables, composite indexes, \textbf{15+} features (\textbf{SHA-256} authentication), admin dashboard; tests covered \textbf{100\%} of requirements.
 \end{itemize}
 
-\textbf{2D RPG Combat Prototype (UE5 + C++)} \hfill \textit{Sept.\ 2024 -- Dec.\ 2024}
+\vspace{0.06em}
+\noindent\textbf{2D RPG Combat (UE5 + C++)} \quad Developer \hfill {\normalsize Sept.--Dec.\ 2024}
 \begin{itemize}
-  \item Implemented combat in \textbf{C++} (three enemy AI archetypes, dynamic levels); \textbf{Qt} launcher with \textbf{SHA-256}-secured messaging; \textbf{PaperZD} animation state machines with hit detection and cooldowns. Team contributed \textbf{1,000+} lines of core code; project named \textbf{best course case}.
+  \item \textbf{C++} combat (three enemy AI types); \textbf{Qt} launcher with \textbf{SHA-256} messaging; \textbf{PaperZD} animation state machines; team \textbf{1,000+} lines core code; \textbf{best course project}.
 \end{itemize}
 
-\section*{Leadership, Teaching \& Campus Roles}
-\textbf{Undergraduate Student Teaching Fellow (USTF)} \quad School of Data Science, CUHK-Shenzhen \hfill \textit{Sept.\ 2024 -- Present}
+\cvsec{Campus Roles, Honors \& Skills}
+\textbf{Undergraduate Teaching Fellow (USTF)}, School of Data Science \hfill {\normalsize Sept.\ 2024 -- Present}
 \begin{itemize}
-  \item Three consecutive semesters teaching \textbf{Data Structures}, \textbf{Databases}, and one additional core course; delivered \textbf{10+} tutorials to \textbf{800+} students; co-designed problems and grading. \textbf{SDS Excellent USTF Award (2024--2025)}.
+  \item \textbf{Data Structures}, \textbf{Databases}, +1 core course; \textbf{10+} tutorials, \textbf{800+} students; co-designed problems and grading; \textbf{SDS Excellent USTF Award} (2024--2025).
 \end{itemize}
 
-\textbf{Founder \& Vice President} \quad 2Tired Cycling Club, CUHK-Shenzhen \hfill \textit{Jul.\ 2024 -- Present}
+\vspace{0.08em}
+\noindent\textbf{Student Assistant}, University Library \hfill {\normalsize Nov.\ 2023 -- Present}
 \begin{itemize}
-  \item Built the club from zero: \textbf{20}-person core team across five functions; organized large rides (e.g.\ Songshan Lake) and a \textbf{Tour de France} athlete meet-up; first-year membership \textbf{80+}, event satisfaction \textbf{95\%}.
+  \item Printers (\textbf{X1E}, \textbf{Ultimaker S5}, \textbf{Form~2}), \textbf{30+} jobs; \textbf{10+} edits (FCP, Photoshop); 3D-printing workshops.
 \end{itemize}
 
-\textbf{Student Assistant} \quad University Library, CUHK-Shenzhen \hfill \textit{Nov.\ 2023 -- Present}
+\vspace{0.08em}
+\noindent\textbf{Founder \& Vice President}, 2Tired Cycling Club \hfill {\normalsize Jul.\ 2024 -- Present}
 \begin{itemize}
-  \item Ran \textbf{Bambu X1E}, \textbf{Ultimaker S5}, and \textbf{Form~2} industrial printers end-to-end (slicing, supports, finishing); \textbf{30+} jobs. Delivered \textbf{10+} edits (\textbf{Final Cut Pro}, \textbf{Photoshop}); led 3D-printing workshops on slicing.
+  \item Core team \textbf{20}, five functions; Songshan Lake \& Tour de France meet-up; first year \textbf{80+} members, \textbf{95\%} satisfaction.
 \end{itemize}
 
-\section*{Honors \& Awards}
-\begin{itemize}
-  \item SDS Excellent USTF Award, School of Data Science (2024--2025).
-  \item Third Prize, Guangdong Division, China Undergraduate Mathematical Contest in Modeling (2025).
-  \item Bronze, Men's 1500\,m --- Inaugural CUHK-Shenzhen University Games.
-  \item Bronze, Men's 100\,m breaststroke --- 7\textsuperscript{th} CUHK-Shenzhen Sports Festival.
-\end{itemize}
+\vspace{0.1em}
+\noindent\textbf{Honors:}\ {\small CUMCM Guangdong Third (2025); bronze 1500\,m (university games); bronze 100\,m breaststroke (sports festival).}
 
-\section*{Skills \& Interests}
-\begin{tabular}{@{}p{1.55in}p{4.85in}@{}}
-  \textbf{Languages} & Chinese (native); English (professional proficiency for coursework and work). \\
-  \textbf{Technical} & \textbf{Python} (advanced), \textbf{SQL}; C++, R; \textbf{Unreal Engine 5}; ML/LLM serving (SGLang, quantization, parallelism); data engineering; GUI (tkinter/Qt). \\
+\vspace{0.2em}
+\noindent\small
+\begin{tabularx}{\linewidth}{@{}p{3.45em}Y@{}}
+  \textbf{Languages} & Chinese (native); English (professional proficiency for coursework and work). \\[0.06em]
+  \textbf{Technical} & \textbf{Python} (advanced), \textbf{SQL}; C++, R, \textbf{UE5}; LLM serving (SGLang, parallelism, quantization); data engineering; tkinter/Qt. \\[0.06em]
   \textbf{Interests} & Cycling, photography, hiking, amateur radio, Model United Nations. \\
-\end{tabular}
+\end{tabularx}
 
 \end{document}
