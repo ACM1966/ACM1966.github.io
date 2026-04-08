@@ -495,7 +495,7 @@ section {
 
 .games-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 25px;
     max-width: 900px;
     margin: 0 auto;
@@ -538,9 +538,190 @@ section {
     margin-bottom: 5px;
 }
 
+.game-info {
+    min-width: 0;
+}
+
 .game-info p {
     font-size: 0.9rem;
     color: var(--text-secondary);
+}
+
+@media (max-width: 980px) {
+    .games-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .games-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== About Page ===== */
+.about-main {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.about-hero {
+    padding: 160px 0 40px;
+    min-height: auto;
+    display: block;
+}
+
+.about-name {
+    font-size: 3.2rem;
+    line-height: 1.15;
+    margin-bottom: 10px;
+}
+
+.about-tagline {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+}
+
+.about-focus {
+    font-size: 1rem;
+    color: var(--accent-color);
+    margin-bottom: 28px;
+    letter-spacing: 0.5px;
+}
+
+.about-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.about-link-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--text-primary);
+    background: var(--surface-color);
+    border: 1px solid var(--surface-border);
+    transition: all 0.3s ease;
+}
+
+.about-link-pill:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.about-section {
+    padding: 0 0 48px;
+    min-height: auto;
+    display: block;
+}
+
+.about-section-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+}
+
+.about-section-title i {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+}
+
+.about-card {
+    background: var(--surface-color);
+    border: 1px solid var(--surface-border);
+    border-radius: 16px;
+    padding: 28px 32px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.about-card p {
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: 12px;
+}
+
+.about-card p:last-child {
+    margin-bottom: 0;
+}
+
+.about-card strong {
+    color: var(--text-primary);
+}
+
+.timeline-item {
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--surface-border);
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+.timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.timeline-header strong {
+    color: var(--text-primary);
+    font-size: 1.05rem;
+}
+
+.timeline-date {
+    font-size: 0.85rem;
+    color: var(--accent-color);
+    white-space: nowrap;
+}
+
+.timeline-sub {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+}
+
+.timeline-detail {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.skill-group {
+    margin-bottom: 20px;
+}
+
+.skill-group:last-child {
+    margin-bottom: 0;
+}
+
+.skill-group h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+
+.about-contact {
+    padding-bottom: 0;
 }
 
 /* Responsive Design */
@@ -563,6 +744,7 @@ section {
         font-size: 0.9rem; 
     }
     main { padding: 0 15px; }
+    .about-main { padding: 0 15px; }
     .hero-title { font-size: 2rem; }
     .hero-subtitle { font-size: 1rem; }
     .hero-actions { flex-direction: column; width: 100%; }
@@ -580,4 +762,10 @@ section {
     .game-info h3 { font-size: 1.1rem; }
     .game-info p { font-size: 0.85rem; }
     .footer { padding: 30px 15px; }
+    .about-name { font-size: 2.2rem; }
+    .about-hero { padding-top: 120px; }
+    .about-card { padding: 20px 18px; }
+    .timeline-header { flex-direction: column; gap: 2px; }
+    .about-links { gap: 8px; }
+    .about-link-pill { padding: 7px 14px; font-size: 0.85rem; }
 }
